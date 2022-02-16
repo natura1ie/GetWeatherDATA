@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GetWeatherDATA</string>
+    <string name="first_text">Just a moment, please.\n少々お待ちください…</string>
 </resources>
