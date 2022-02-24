@@ -25,6 +25,7 @@ open class WeatherShowFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.weather_show_main, container, false)
         binding.viewModel = weatherShowViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
