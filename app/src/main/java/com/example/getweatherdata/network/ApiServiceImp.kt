@@ -5,6 +5,5 @@ import javax.inject.Inject
 
 class ApiServiceImp @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getCity(): City = apiService.getCityData()
-//    suspend fun getCity(city:String,appId:String): City = apiService.getCityData(city,appId)
+    suspend fun getCity(lat:String,lon:String,lang:String,units:String,APPID:String): City = apiService.getCityData(lat,lon,lang,units,APPID)
 }

@@ -1,5 +1,6 @@
 package com.example.getweatherdata.repository
 
+import android.util.Log
 import com.example.getweatherdata.model.City
 import com.example.getweatherdata.network.ApiServiceImp
 import kotlinx.coroutines.Dispatchers
@@ -11,8 +12,17 @@ import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(private val apiServiceImp: ApiServiceImp) {
 
-    fun getCityData(): Flow<City> = flow {
-        val response= apiServiceImp.getCity()
+    fun getCityData(search:String): Flow<City> = flow {
+        if (search == "osaka") {
+            Log.d("main", "検索しているのは" + search + "の天気です")
+        }
+        val response= apiServiceImp.getCity(
+            "",
+            "",
+            "ja",
+            "metric",
+            ""
+        )
         emit(response)
     }.flowOn(Dispatchers.IO)
         .conflate()

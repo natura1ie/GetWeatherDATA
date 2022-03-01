@@ -6,11 +6,12 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    @GET("forecast")
     suspend fun getCityData(
+        @Query("lat") lat:String,
+        @Query("lon") lon:String,
+        @Query("lang") lang:String,
+        @Query("units") units:String,
+        @Query("APPID") appId:String
     ): City
-//    @GET("weather/")
-//    suspend fun getCityData(
-//        @Query("q") q:String,
-//        @Query("appid") appId:String
-//    ): City
 }

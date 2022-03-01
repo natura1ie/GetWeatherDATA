@@ -5,12 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.getweatherdata.model.City
-import com.example.getweatherdata.model.Weather
 import com.example.getweatherdata.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.catch
@@ -37,8 +35,8 @@ class WeatherShowViewModel @Inject constructor(private val weatherRepository: We
     {
         viewModelScope.launch {
             searchChannel.asFlow()
-                .flatMapLatest {
-                    weatherRepository.getCityData()
+                .flatMapLatest { search->
+                    weatherRepository.getCityData(search)
                 }.catch {e->
                     Log.d("main", "${e.message}")
                 }.collectLatest { response->
