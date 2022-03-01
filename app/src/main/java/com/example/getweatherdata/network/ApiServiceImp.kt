@@ -1,0 +1,10 @@
+package com.example.getweatherdata.network
+
+import com.example.getweatherdata.model.City
+import javax.inject.Inject
+
+class ApiServiceImp @Inject constructor(private val apiService: ApiService) {
+
+    suspend fun getCity(): City = apiService.getCityData()
+//    suspend fun getCity(city:String,appId:String): City = apiService.getCityData(city,appId)
+}
